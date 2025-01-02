@@ -9,7 +9,7 @@ export default async function Home() {
     <div className="grid items-center p-4 pb-5 gap-6 sm:p-10 font-[family-name:var(--font-geist-sans)]">
      <h1 className="text-2xl font-bold">Product List</h1>
      <ol >
-     { response.products.map((item:any,i:number)=>
+     { response.products.map((item:any)=>
     (
                <div className="w-[24%] my-7 mx-1 max-h-[400px] text-center bg-slate-200 flex flex-col justify-center items-center gap-5 float-start p-5">
             <li >
