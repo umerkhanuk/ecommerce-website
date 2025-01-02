@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Props from "./component/Props";
 import Link from "next/link";
 
 export default async function Home() {
