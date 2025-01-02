@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// Define a Product type
 type Product = {
   id: number;
   title: string;
@@ -10,41 +9,38 @@ type Product = {
 };
 
 export default async function Home() {
+  // Fetch product data
   const fetchdata = await fetch("https://dummyjson.com/products");
   const response = await fetchdata.json();
 
-  // Explicitly type the response
-  const products: Product[] = response.products;
-
   return (
-    <div className="grid items-center p-4 pb-5 gap-6 sm:p-10 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-2xl font-bold">Product List</h1>
-      <ol className="flex flex-wrap gap-6">
-        {products.map((item) => (
-          <li
+    <div className="p-4 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+      <h1 className="text-2xl font-bold text-center mb-6">Product List</h1>
+      <div className="grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        {response.products.map((item: Product) => (
+          <div
             key={item.id}
-            className="w-[24%] my-7 mx-1 max-h-[400px] text-center bg-slate-200 flex flex-col justify-center items-center gap-5 p-5"
+            className="bg-slate-200 flex flex-col justify-center items-center p-5 rounded-md shadow-md"
           >
             <Link href={`/products/${item.id}`}>
               <Image
                 src={item.thumbnail}
                 width={250}
                 height={250}
-                alt={item.title}
-                className="rounded-md"
+                alt={`${item.title} image`}
+                className="object-cover rounded-md"
               />
+              <span className="block mt-2 font-semibold text-center">{item.title}</span>
             </Link>
-            <span className="font-medium">{item.title}</span>
-            <span className="text-red-600 font-semibold">${item.price}</span>
-            <Link
-              href="#"
-              className="bg-black text-white px-4 py-2 rounded-md mt-2"
-            >
+            <span className="text-red-600 text-lg font-bold mt-2">
+              ${item.price}
+            </span>
+            <Link href="/cart" className="bg-black text-white px-4 py-2 rounded-md mt-3">
               Add to Cart
             </Link>
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
     </div>
   );
 }
