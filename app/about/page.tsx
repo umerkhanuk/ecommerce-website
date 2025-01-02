@@ -1,11 +1,8 @@
-import Props from "../component/Props"
 
-const about = (prop:{name:string,lname:string}) => {
+const about = () => {
   return (
     <div>
-    <Props name="john" lname="mark"/>
-    <Props name="alex" lname="mark"/>
-
+        <h1>About </h1>
     </div>
   )
 }
