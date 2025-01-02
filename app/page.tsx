@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 export default async function Home() {
-  const fetchdata = await fetch("https://dummyjson.com/products")
-  const response = await fetchdata.json()
   return (
     <div className="grid bg-[#3498DB] py-32 items-center p-4 pb-5 gap-6 mb-9 sm:p-10 font-[family-name:var(--font-geist-sans)]">
      <h1 className="text-4xl font-bold font-serif mt-28">Pakistan No # 1 E-Bazaar</h1>
